@@ -7,8 +7,9 @@ import {
   Button,
   CardHeader,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
-export default function card({ cardname, imagen }) {
+export default function card({ cardname, imagen, url }) {
   return (
     <div>
       <Card maxW="xs">
@@ -25,9 +26,11 @@ export default function card({ cardname, imagen }) {
           />
         </CardBody>
         <CardFooter>
-          <Button width={"100%"} variant="solid" colorScheme="blue">
-            Ingresar
-          </Button>
+          <Link to={url}>
+            <Button width={"100%"} variant="solid" colorScheme="blue">
+              Ingresar
+            </Button>
+          </Link>
         </CardFooter>
       </Card>
     </div>

@@ -12,10 +12,22 @@ export default function dashboard() {
         <Heading>Dashboard</Heading>
       </div>
       <div className={style.card}>
-        <Card cardname={"Materia Prima"} imagen={materiaprima} />
-        <Card cardname={"Empaques"} imagen={empaques} />
-        <Card cardname={"Producto terminado"} imagen={productterminado} />
-        <Card cardname={"Insumos de Limpieza"} imagen={limpieza} />
+        <Card
+          cardname={"Materia Prima"}
+          imagen={materiaprima}
+          url={"/materiaprima"}
+        />
+        <Card cardname={"Empaques"} imagen={empaques} url={"/empaques"} />
+        <Card
+          cardname={"Producto terminado"}
+          imagen={productterminado}
+          url={"/productoterminado"}
+        />
+        <Card
+          cardname={"Insumos de Limpieza"}
+          imagen={limpieza}
+          url={"/limpieza"}
+        />
       </div>
     </div>
   );
