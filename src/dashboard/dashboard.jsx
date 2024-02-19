@@ -1,7 +1,10 @@
 import style from "./dasboard.module.css";
 import { Heading } from "@chakra-ui/react";
 import Card from "../Card/card";
-import {} from "@chakra-ui/react";
+import empaques from "../assets/Empaques.jpg";
+import materiaprima from "../assets/materiaprima.jpg";
+import productterminado from "../assets/Productoterminado.jpg";
+import limpieza from "../assets/limpieza.jpg";
 export default function dashboard() {
   return (
     <div className={style.contenedor}>
@@ -9,19 +12,10 @@ export default function dashboard() {
         <Heading>Dashboard</Heading>
       </div>
       <div className={style.card}>
-        <Card
-          cardname={"Materia Prima"}
-          imagen={"src/assets/materiaprima.jpg"}
-        />
-        <Card cardname={"Empaques"} imagen={"src/assets/Empaques.jpg"} />
-        <Card
-          cardname={"Producto terminado"}
-          imagen={"src/assets/Producto terminado.JPG"}
-        />
-        <Card
-          cardname={"Insumos de Limpieza"}
-          imagen={"src/assets/limpieza.jpg"}
-        />
+        <Card cardname={"Materia Prima"} imagen={materiaprima} />
+        <Card cardname={"Empaques"} imagen={empaques} />
+        <Card cardname={"Producto terminado"} imagen={productterminado} />
+        <Card cardname={"Insumos de Limpieza"} imagen={limpieza} />
       </div>
     </div>
   );
