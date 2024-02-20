@@ -27,8 +27,8 @@ export default function card({ cardname, imagen, url }) {
         </CardBody>
         <CardFooter>
           <Link to={url}>
-            <Button width={"100%"} variant="solid" colorScheme="blue">
-              Ingresar
+            <Button variant="solid" colorScheme="blue">
+              Entrar
             </Button>
           </Link>
         </CardFooter>
