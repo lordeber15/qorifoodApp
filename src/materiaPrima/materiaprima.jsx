@@ -10,15 +10,23 @@ import {
   Th,
   TableContainer,
 } from "@chakra-ui/react";
-import { DeleteIcon, AddIcon, EditIcon } from "@chakra-ui/icons";
-import {} from "@chakra-ui/react";
+import { DeleteIcon, AddIcon, EditIcon, ArrowLeftIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 export default function materiaprima() {
   return (
     <div className={style.contenedor}>
       <div className={style.titulo}>
+        <Link to={"/dashboard"}>
+          <IconButton
+            variant="outline"
+            colorScheme="teal"
+            aria-label="Send email"
+            icon={<ArrowLeftIcon />}
+          />
+        </Link>
+
         <Heading>Materia Prima</Heading>
-      </div>
-      <div className={style.botones}>
+
         <IconButton
           variant="outline"
           colorScheme="teal"
@@ -26,6 +34,7 @@ export default function materiaprima() {
           icon={<AddIcon />}
         />
       </div>
+
       <div className={style.tablas}>
         <Card padding={"15px"}>
           <TableContainer>

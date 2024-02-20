@@ -1,0 +1,15 @@
+.contenedor{
+    padding: 20px;
+}
+.titulo{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.tablas{
+padding: 10px;
+padding-left: 30px;
+    padding-right: 30px;
+}
