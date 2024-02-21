@@ -9,10 +9,32 @@ import {
   Tr,
   Th,
   TableContainer,
+  Modal,
+  ModalFooter,
+  ModalOverlay,
+  FormControl,
+  ModalContent,
+  ModalHeader,
+  Button,
+  FormLabel,
+  Input,
+  ModalCloseButton,
+  ModalBody,
+  useDisclosure,
+  Select,
+  Divider,
 } from "@chakra-ui/react";
 import { DeleteIcon, AddIcon, EditIcon, ArrowLeftIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
+import moment from "moment";
+
 export default function productoterminado() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const initialRef = useRef(null);
+  const finalRef = useRef(null);
+  const date = moment().format("L");
   return (
     <div className={style.contenedor}>
       <div className={style.titulo}>
@@ -32,6 +54,7 @@ export default function productoterminado() {
           colorScheme="teal"
           aria-label="Send email"
           icon={<AddIcon />}
+          onClick={onOpen}
         />
       </div>
 
@@ -62,6 +85,7 @@ export default function productoterminado() {
                     <Th> Unidades</Th>
                     <Th> Caja x 21 </Th>
                   </Th>
+                  <Th textAlign={"center"}>Feha de Vencimiento</Th>
                   <Th textAlign={"center"}>Editar</Th>
                 </Tr>
               </Thead>
@@ -80,24 +104,43 @@ export default function productoterminado() {
                     8.50
                   </Th>
                   <Th>
-                    <Th isNumeric> 8.5 </Th>
+                    <Th isNumeric textAlign={"center"}>
+                      {" "}
+                      8.5{" "}
+                    </Th>
                     <Th> </Th>
-                    <Th isNumeric> 3 </Th>
+                    <Th isNumeric textAlign={"center"}>
+                      {" "}
+                      3{" "}
+                    </Th>
                     <Th> </Th>
                   </Th>
 
                   <Th>
-                    <Th isNumeric> 8.5 </Th>
+                    <Th isNumeric textAlign={"center"}>
+                      {" "}
+                      8.5{" "}
+                    </Th>
                     <Th> </Th>
-                    <Th isNumeric> 3 </Th>
+                    <Th isNumeric textAlign={"center"}>
+                      {" "}
+                      3{" "}
+                    </Th>
                     <Th> </Th>
                   </Th>
                   <Th>
-                    <Th isNumeric> 8.5 </Th>
+                    <Th isNumeric textAlign={"center"}>
+                      {" "}
+                      8.5{" "}
+                    </Th>
                     <Th> </Th>
-                    <Th isNumeric> 3 </Th>
+                    <Th isNumeric textAlign={"center"}>
+                      {" "}
+                      3{" "}
+                    </Th>
                     <Th> </Th>
                   </Th>
+                  <Th textAlign={"center"}>{date}</Th>
                   <Th textAlign={"center"}>
                     <IconButton
                       marginRight={"5px"}
@@ -128,26 +171,38 @@ export default function productoterminado() {
                     50.50
                   </Th>
 
-                  <Th>
+                  <Th textAlign={"center"}>
                     <Th isNumeric> 8.5 </Th>
                     <Th></Th>
-                    <Th isNumeric> 3 </Th>
+                    <Th isNumeric>3 </Th>
                     <Th> </Th>
                   </Th>
 
                   <Th>
-                    <Th isNumeric> 8.5 </Th>
+                    <Th isNumeric textAlign={"center"}>
+                      {" "}
+                      8.5{" "}
+                    </Th>
                     <Th> </Th>
-                    <Th isNumeric> 3 </Th>
+                    <Th isNumeric textAlign={"center"}>
+                      {" "}
+                      3{" "}
+                    </Th>
                     <Th> </Th>
                   </Th>
                   <Th>
-                    <Th isNumeric> 8.5 </Th>
+                    <Th isNumeric textAlign={"center"}>
+                      {" "}
+                      8.5{" "}
+                    </Th>
                     <Th> </Th>
-                    <Th isNumeric> 3 </Th>
+                    <Th isNumeric textAlign={"center"}>
+                      {" "}
+                      3{" "}
+                    </Th>
                     <Th> </Th>
                   </Th>
-
+                  <Th textAlign={"center"}>{date}</Th>
                   <Th textAlign={"center"}>
                     <IconButton
                       marginRight={"5px"}
@@ -178,24 +233,43 @@ export default function productoterminado() {
                     50
                   </Th>
                   <Th>
-                    <Th isNumeric> 8.5 </Th>
+                    <Th isNumeric textAlign={"center"}>
+                      {" "}
+                      8.5{" "}
+                    </Th>
                     <Th> </Th>
-                    <Th isNumeric> 3 </Th>
+                    <Th isNumeric textAlign={"center"}>
+                      {" "}
+                      3{" "}
+                    </Th>
                     <Th> </Th>
                   </Th>
 
                   <Th>
-                    <Th isNumeric> 8.5 </Th>
+                    <Th isNumeric textAlign={"center"}>
+                      {" "}
+                      8.5{" "}
+                    </Th>
                     <Th> </Th>
-                    <Th isNumeric> 3 </Th>
+                    <Th isNumeric textAlign={"center"}>
+                      {" "}
+                      3{" "}
+                    </Th>
                     <Th> </Th>
                   </Th>
                   <Th>
-                    <Th isNumeric> 8.5 </Th>
+                    <Th isNumeric textAlign={"center"}>
+                      {" "}
+                      8.5{" "}
+                    </Th>
                     <Th> </Th>
-                    <Th isNumeric> 3 </Th>
+                    <Th isNumeric textAlign={"center"}>
+                      {" "}
+                      3{" "}
+                    </Th>
                     <Th> </Th>
                   </Th>
+                  <Th textAlign={"center"}>{date}</Th>
                   <Th textAlign={"center"}>
                     <IconButton
                       marginRight={"5px"}
@@ -217,6 +291,74 @@ export default function productoterminado() {
           </TableContainer>
         </Card>
       </div>
+      <Modal
+        initialFocusRef={initialRef}
+        finalFocusRef={finalRef}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Producto Terminado</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
+            <FormControl>
+              <FormLabel>Tipo de pasta</FormLabel>
+              <Input ref={initialRef} placeholder="Tipo de pasta" />
+            </FormControl>
+
+            <FormControl mt={4}>
+              <FormLabel>Formato</FormLabel>
+              <Select placeholder="Selecciona una Formato">
+                <option value="TORNILLO">TORNILLO</option>
+                <option value="TAGLIATELLE 8.3">TAGLIATELLE 8.3</option>
+                <option value="CANUTO">CANUTO</option>
+              </Select>
+            </FormControl>
+            <FormControl mt={4}>
+              <FormLabel>Unidad</FormLabel>
+              <Select placeholder="Selecciona una Unidad">
+                <option value="Metros">Mt.</option>
+                <option value="Kilogramo">Kg.</option>
+                <option value="Litro">Lt.</option>
+              </Select>
+            </FormControl>
+            <FormControl mt={4}>
+              <FormLabel>{"Presentacion (gr)"}</FormLabel>
+              <Input type="number" placeholder="Presentacion (gr)" />
+            </FormControl>
+            <FormControl mt={4}>
+              <FormLabel>N° de Lote</FormLabel>
+              <Input type="number" placeholder="N° de Lote" />
+            </FormControl>
+            <FormControl mt={4}>
+              <FormLabel>Entradas</FormLabel>
+              <Input type="number" placeholder="Unidad" />
+              <Divider height="10px" />
+              <Input type="number" placeholder="Caja x 21" />
+            </FormControl>
+            <FormControl mt={4}>
+              <FormLabel>Salidas</FormLabel>
+              <Input type="number" placeholder="Unidad" />
+              <Divider height="10px" />
+              <Input type="number" placeholder="Caja x 21" />
+            </FormControl>
+            <FormControl mt={4}>
+              <FormLabel>Stock Final</FormLabel>
+              <Input type="number" placeholder="Unidad" />
+              <Divider height="10px" />
+              <Input type="number" placeholder="Caja x 21" />
+            </FormControl>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3}>
+              Guardar
+            </Button>
+            <Button onClick={onClose}>Cancelar</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </div>
   );
 }
