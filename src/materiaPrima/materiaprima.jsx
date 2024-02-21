@@ -41,25 +41,34 @@ export default function materiaprima() {
             <Table>
               <Thead>
                 <Tr>
-                  <Th>Codigo</Th>
-                  <Th>Insumos</Th>
-                  <Th>Medida</Th>
-                  <Th isNumeric>Ingreso</Th>
-                  <Th isNumeric>Salida</Th>
-                  <Th>Icons</Th>
-                  <Th>Editar</Th>
+                  <Th textAlign={"center"}>Codigo</Th>
+                  <Th textAlign={"center"}>Insumos</Th>
+                  <Th textAlign={"center"}>Medida</Th>
+                  <Th isNumeric textAlign={"center"}>
+                    Ingreso
+                  </Th>
+                  <Th isNumeric textAlign={"center"}>
+                    Salida
+                  </Th>
+                  <Th textAlign={"center"}>Icons</Th>
+                  <Th textAlign={"center"}>Editar</Th>
                 </Tr>
               </Thead>
               <Tbody>
-                <Tr selected={true}>
-                  <Th>MP001</Th>
-                  <Th>Detergente </Th>
-                  <Th>Kg.</Th>
-                  <Th isNumeric>28.50</Th>
-                  <Th isNumeric>8.50</Th>
+                <Tr>
+                  <Th textAlign={"center"}>MP001</Th>
+                  <Th textAlign={"center"}>Detergente </Th>
+                  <Th textAlign={"center"}>Kg.</Th>
+                  <Th isNumeric textAlign={"center"}>
+                    28.50
+                  </Th>
+                  <Th isNumeric textAlign={"center"}>
+                    8.50
+                  </Th>
                   <Th></Th>
-                  <Th>
+                  <Th textAlign={"center"}>
                     <IconButton
+                      marginRight={"5px"}
                       variant="outline"
                       colorScheme="teal"
                       aria-label="Send email"
@@ -74,14 +83,19 @@ export default function materiaprima() {
                   </Th>
                 </Tr>
                 <Tr>
-                  <Th>MP002</Th>
-                  <Th>Jabon Liquido</Th>
-                  <Th>Lt.</Th>
-                  <Th isNumeric>1057.74</Th>
-                  <Th isNumeric>50.50</Th>
+                  <Th textAlign={"center"}>MP002</Th>
+                  <Th textAlign={"center"}>Jabon Liquido</Th>
+                  <Th textAlign={"center"}>Lt.</Th>
+                  <Th isNumeric textAlign={"center"}>
+                    1057.74
+                  </Th>
+                  <Th isNumeric textAlign={"center"}>
+                    50.50
+                  </Th>
                   <Th></Th>
-                  <Th>
+                  <Th textAlign={"center"}>
                     <IconButton
+                      marginRight={"5px"}
                       variant="outline"
                       colorScheme="teal"
                       aria-label="Send email"
@@ -96,14 +110,19 @@ export default function materiaprima() {
                   </Th>
                 </Tr>
                 <Tr>
-                  <Th>MP003</Th>
-                  <Th>Alcohol en Gel </Th>
-                  <Th>Lt.</Th>
-                  <Th isNumeric>94.56</Th>
-                  <Th isNumeric>50</Th>
+                  <Th textAlign={"center"}>MP003</Th>
+                  <Th textAlign={"center"}>Alcohol en Gel </Th>
+                  <Th textAlign={"center"}>Lt.</Th>
+                  <Th isNumeric textAlign={"center"}>
+                    94.56
+                  </Th>
+                  <Th isNumeric textAlign={"center"}>
+                    50
+                  </Th>
                   <Th></Th>
-                  <Th>
+                  <Th textAlign={"center"}>
                     <IconButton
+                      marginRight={"5px"}
                       variant="outline"
                       colorScheme="teal"
                       aria-label="Send email"

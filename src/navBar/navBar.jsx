@@ -13,7 +13,9 @@ import { Link } from "react-router-dom";
 export default function navBar() {
   return (
     <div className={style.contenedor}>
-      <Heading>QuriFood</Heading>
+      <Link to="/dashboard">
+        <Heading>QuriFood</Heading>
+      </Link>
       <div className={style.search}>
         <Input placeholder="Buscar..." />
         <Link to="#">
@@ -28,7 +30,9 @@ export default function navBar() {
             variant="outline"
           />
           <MenuList>
-            <MenuItem icon={<EditIcon />}>Salir</MenuItem>
+            <Link to="/ ">
+              <MenuItem icon={<EditIcon />}>Salir</MenuItem>
+            </Link>
           </MenuList>
         </Menu>
       </div>

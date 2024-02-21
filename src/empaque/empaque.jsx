@@ -9,10 +9,28 @@ import {
   Tr,
   Th,
   TableContainer,
+  Modal,
+  ModalFooter,
+  ModalOverlay,
+  FormControl,
+  ModalContent,
+  ModalHeader,
+  Button,
+  FormLabel,
+  Input,
+  ModalCloseButton,
+  ModalBody,
+  useDisclosure,
+  Select,
 } from "@chakra-ui/react";
 import { DeleteIcon, AddIcon, EditIcon, ArrowLeftIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 export default function empaque() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const initialRef = useRef(null);
+  const finalRef = useRef(null);
   return (
     <div className={style.contenedor}>
       <div className={style.titulo}>
@@ -32,6 +50,7 @@ export default function empaque() {
           colorScheme="teal"
           aria-label="Send email"
           icon={<AddIcon />}
+          onClick={onOpen}
         />
       </div>
 
@@ -155,6 +174,52 @@ export default function empaque() {
           </TableContainer>
         </Card>
       </div>
+      <Modal
+        initialFocusRef={initialRef}
+        finalFocusRef={finalRef}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Empaques</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
+            <FormControl>
+              <FormLabel>Empaque</FormLabel>
+              <Input ref={initialRef} placeholder="Empaque" />
+            </FormControl>
+
+            <FormControl mt={4}>
+              <FormLabel>Media</FormLabel>
+              <Select placeholder="Selecciona una Unidad">
+                <option value="Metros">Mt.</option>
+                <option value="Kilogramo">Kg.</option>
+                <option value="Litro">Lt.</option>
+              </Select>
+            </FormControl>
+            <FormControl mt={4}>
+              <FormLabel>Inicial</FormLabel>
+              <Input type="number" placeholder="Inicial" />
+            </FormControl>
+            <FormControl mt={4}>
+              <FormLabel>Ingreso</FormLabel>
+              <Input type="number" placeholder="Ingreso" />
+            </FormControl>
+            <FormControl mt={4}>
+              <FormLabel>Salida</FormLabel>
+              <Input type="number" placeholder="Salida" />
+            </FormControl>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3}>
+              Guardar
+            </Button>
+            <Button onClick={onClose}>Cancelar</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </div>
   );
 }
