@@ -13,9 +13,11 @@ import { Link } from "react-router-dom";
 export default function navBar() {
   return (
     <div className={style.contenedor}>
-      <Link to="/dashboard">
-        <Heading>QuriFood</Heading>
-      </Link>
+      <div className={style.icon}>
+        <Link to="/dashboard">
+          <Heading>QuriFood</Heading>
+        </Link>
+      </div>
       <div className={style.search}>
         <Input placeholder="Buscar..." />
         <Link to="#">

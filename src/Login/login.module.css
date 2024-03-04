@@ -34,3 +34,12 @@
     
     color:#f3b60e
 }
+
+@media screen and (max-width: 812px){
+.imagen{
+    display: none;
+}
+.login{
+    width: 100%;
+}
+}

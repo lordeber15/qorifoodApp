@@ -9,10 +9,21 @@
     background-color: #121212;
     color: #f3b60e;
 }
+.icon{
+    width: 50%;
+}
 .search{
     display: flex;
     align-items: center;
     flex-direction: row;
-    gap: 10px;
-    width: 20%;
+    gap: 8px;
+    width: 30%;
+    transition: all 0.3;
+}
+
+@media screen and (max-width: 812px) {
+    .search{
+        width: 100%;
+        transition: all 0.3;
+    }
 }
