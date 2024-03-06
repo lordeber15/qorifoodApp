@@ -26,7 +26,13 @@ import {
 import { DeleteIcon, AddIcon, EditIcon, ArrowLeftIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
+import { useQuery } from "react-query";
+import { getEmpaques, createEmpaques } from "../request/empaque";
 export default function empaque() {
+  const { data: dataEmpaques } = useQuery({
+    queryKey: ["empaques"],
+    queryFn: getEmpaques,
+  });
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const initialRef = useRef(null);
@@ -79,6 +85,39 @@ export default function empaque() {
                 </Tr>
               </Thead>
               <Tbody>
+                {dataEmpaques &&
+                  dataEmpaques.map((datosempaques) => {
+                    return (
+                      <Tr key={datosempaques.id}>
+                        <Th textAlign={"center"}>{datosempaques.id}</Th>
+                        <Th textAlign={"center"}>{datosempaques.empaque} </Th>
+                        <Th textAlign={"center"}>{datosempaques.medida} </Th>
+                        <Th textAlign={"center"}>{datosempaques.inicial} </Th>
+                        <Th textAlign={"center"}>{datosempaques.ingreso} </Th>
+                        <Th textAlign={"center"}>{datosempaques.salida} </Th>
+                        <Th textAlign={"center"}>
+                          {parseFloat(datosempaques.inicial) +
+                            parseFloat(datosempaques.ingreso) -
+                            parseFloat(datosempaques.salida)}
+                        </Th>
+                        <Th textAlign={"center"}>
+                          <IconButton
+                            marginRight={"5px"}
+                            variant="outline"
+                            colorScheme="teal"
+                            aria-label="Send email"
+                            icon={<EditIcon />}
+                          />
+                          <IconButton
+                            variant="outline"
+                            colorScheme="teal"
+                            aria-label="Send email"
+                            icon={<DeleteIcon />}
+                          />
+                        </Th>
+                      </Tr>
+                    );
+                  })}
                 <Tr>
                   <Th textAlign={"center"}>MP001</Th>
                   <Th textAlign={"center"}>Detergente </Th>
