@@ -26,7 +26,7 @@ import {
 import { DeleteIcon, AddIcon, EditIcon, ArrowLeftIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
-export default function limpieza() {
+export default function Limpieza() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const initialRef = useRef(null);

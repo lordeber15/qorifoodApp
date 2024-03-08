@@ -29,7 +29,7 @@ import { Link } from "react-router-dom";
 import { useRef } from "react";
 import moment from "moment";
 
-export default function productoterminado() {
+export default function Productoterminado() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const initialRef = useRef(null);

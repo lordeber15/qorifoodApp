@@ -11,7 +11,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-export default function login() {
+export default function Login() {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
   return (
