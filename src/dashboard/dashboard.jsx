@@ -5,6 +5,7 @@ import empaques from "../assets/Empaques.webp";
 import materiaprima from "../assets/materiaprima.webp";
 import productterminado from "../assets/Productoterminado.webp";
 import limpieza from "../assets/limpieza.webp";
+
 export default function Dashboard() {
   return (
     <div className={style.contenedor}>

@@ -28,7 +28,12 @@ import { DeleteIcon, AddIcon, EditIcon, ArrowLeftIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
 import { useQuery, useQueryClient, useMutation } from "react-query";
-import { getEmpaques, createEmpaques } from "../request/empaque";
+import {
+  getEmpaques,
+  createEmpaques,
+  deleteEmpaques,
+  updateEmpaques,
+} from "../request/empaque";
 
 export default function Empaque() {
   const {
@@ -49,8 +54,21 @@ export default function Empaque() {
   const addEmpaqueMutation = useMutation({
     mutationFn: createEmpaques,
     onSuccess: () => {
-      console.log("ya se agrego tu tranquilo estas a salvo");
-      queryClient.invalidateQueries("egresos");
+      queryClient.invalidateQueries("empaques");
+    },
+  });
+
+  const deleteEmpaqueMutation = useMutation({
+    mutationFn: deleteEmpaques,
+    onSuccess: () => {
+      queryClient.invalidateQueries("empaques");
+    },
+  });
+
+  const updateEmpaquesMutation = useMutation({
+    mutationFn: updateEmpaques,
+    onSuccess: () => {
+      queryClient.invalidateQueries("empaques");
     },
   });
   const [valueInputEmpaque, setInputEmpaque] = useState("");
@@ -58,6 +76,7 @@ export default function Empaque() {
   const [valueInputInicial, setInputInicial] = useState(0.0);
   const [valueInputIngreso, setInputIngreso] = useState(0.0);
   const [valueInputSalida, setInputSalida] = useState(0.0);
+  const [editEmpaqueId, setEditEmpaqueId] = useState(null);
 
   if (isLoading) {
     return (
@@ -106,6 +125,7 @@ export default function Empaque() {
       console.error("Error al agregar el empaque:", error);
     }
   };
+
   const handlerChangeSelectMedida = (e) => {
     setValueSelectMedida(e.target.value);
   };
@@ -120,6 +140,51 @@ export default function Empaque() {
   };
   const handlerChangeInputSalida = (e) => {
     setInputSalida(e.target.value);
+  };
+  const handleDeleteEmpaque = (id) => {
+    deleteEmpaqueMutation.mutate(id);
+    queryClient.invalidateQueries("empaques");
+  };
+  const handleEditEmpaque = (id) => {
+    setEditEmpaqueId(id);
+    const empaque = dataEmpaques.find((empaque) => empaque.id === id);
+    if (empaque) {
+      setInputEmpaque(empaque.empaque);
+      setValueSelectMedida(empaque.medida);
+      setInputInicial(empaque.inicial);
+      setInputIngreso(empaque.ingreso);
+      setInputSalida(empaque.salida);
+      onOpen();
+    }
+  };
+
+  const handleUpdateEmpaque = () => {
+    if (
+      valueSelectMedida === "" ||
+      valueInputEmpaque === "" ||
+      valueInputInicial === 0 ||
+      valueInputIngreso === 0 ||
+      valueInputSalida === 0
+    ) {
+      console.log(
+        "Por favor, complete todos los campos y seleccione un empaque."
+      );
+      return;
+    }
+    try {
+      updateEmpaquesMutation.mutate({
+        id: editEmpaqueId,
+        empaque: valueInputEmpaque,
+        medida: valueSelectMedida,
+        inicial: valueInputInicial,
+        ingreso: valueInputIngreso,
+        salida: valueInputSalida,
+      });
+      onClose();
+      handlerReset();
+    } catch (error) {
+      console.error("Error al actualizar el empaque:", error);
+    }
   };
 
   const handlerReset = () => {
@@ -153,7 +218,7 @@ export default function Empaque() {
         />
       </div>
       {dataEmpaques.length == 0 ? (
-        <div>No hay Datos que mostrar</div>
+        <Heading className={style.nodatos}>No hay Datos que mostrar</Heading>
       ) : (
         <div className={style.tablas}>
           <Card padding={"15px"}>
@@ -200,13 +265,17 @@ export default function Empaque() {
                               marginRight={"5px"}
                               variant="outline"
                               colorScheme="teal"
-                              aria-label="Send email"
+                              onClick={() => {
+                                handleEditEmpaque(datosempaques.id);
+                              }}
                               icon={<EditIcon />}
                             />
                             <IconButton
                               variant="outline"
                               colorScheme="teal"
-                              aria-label="Send email"
+                              onClick={() => {
+                                handleDeleteEmpaque(datosempaques.id);
+                              }}
                               icon={<DeleteIcon />}
                             />
                           </Th>
@@ -224,7 +293,10 @@ export default function Empaque() {
         initialFocusRef={initialRef}
         finalFocusRef={finalRef}
         isOpen={isOpen}
-        onClose={onClose}
+        onClose={() => {
+          onClose();
+          handlerReset();
+        }}
       >
         <ModalOverlay />
         <ModalContent>
@@ -288,10 +360,24 @@ export default function Empaque() {
           </ModalBody>
 
           <ModalFooter>
-            <Button onClick={handlerClickEmpaque} colorScheme="blue" mr={3}>
-              Guardar
+            {editEmpaqueId == null ? (
+              <Button onClick={handlerClickEmpaque} colorScheme="blue" mr={3}>
+                Guardar
+              </Button>
+            ) : (
+              <Button onClick={handleUpdateEmpaque} colorScheme="blue" mr={3}>
+                Editar
+              </Button>
+            )}
+
+            <Button
+              onClick={() => {
+                onClose();
+                handlerReset();
+              }}
+            >
+              Cancelar
             </Button>
-            <Button onClick={onClose}>Cancelar</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

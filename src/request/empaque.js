@@ -9,5 +9,15 @@ export const getEmpaques = async () => {
   return res.data;
 };
 export const createEmpaques = (empaques) => {
-  empaqueApi.post("/empaques", empaques);
+  return empaqueApi.post("/empaques", empaques);
+};
+
+export const updateEmpaques = (empaques) => {
+  const empaquesCopy = { ...empaques };
+  delete empaquesCopy.id;
+  return empaqueApi.put(`/empaques/${empaques.id}`, empaquesCopy);
+};
+
+export const deleteEmpaques = (id) => {
+  return empaqueApi.delete(`/empaques/${id}`);
 };
