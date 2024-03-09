@@ -99,10 +99,20 @@ export default function Limpieza() {
       return console.log(
         "Debes ingresar un empaque, Seleccionar un medida, inicial, ingreso y salida"
       );
+    }else if (valueInputLimpieza == "") {
+      return console.log("Debes ingresar un Insumo");
+    } else if (valueSelectMedida == "") {
+      return console.log("Debes Seleccionar un Medida");
+    } else if (valueInputInicial == "") {
+      return console.log("Debes ingresar un Inicial");
+    } else if (valueInputIngreso == "") {
+      return console.log("Debes ingresar un Ingreso");
+    } else if (valueInputSalida == "") {
+      return console.log("Debes ingresar un Salida");
     }
     try {
       await addLimpiezaMutation.mutateAsync({
-        limpieza: valueInputLimpieza,
+        insumos: valueInputLimpieza,
         medida: valueSelectMedida,
         inicial: valueInputInicial,
         ingreso: valueInputIngreso,
@@ -139,7 +149,7 @@ export default function Limpieza() {
     setEditLimpiezaId(id);
     const limpieza = dataLimpieza.find((limpieza) => limpieza.id === id);
     if (limpieza) {
-      setInputLimpieza(limpieza.limpieza);
+      setInputLimpieza(limpieza.insumos);
       setValueSelectMedida(limpieza.medida);
       setInputInicial(limpieza.inicial);
       setInputIngreso(limpieza.ingreso);
@@ -164,7 +174,7 @@ export default function Limpieza() {
     try {
       updateLimpiezaMutation.mutate({
         id: editLimpiezaId,
-        limpieza: valueInputLimpieza,
+        insumos: valueInputLimpieza,
         medida: valueSelectMedida,
         inicial: valueInputInicial,
         ingreso: valueInputIngreso,
@@ -238,7 +248,7 @@ export default function Limpieza() {
                   {dataLimpieza.map((datoLimpieza) => (
                     <Tr key={datoLimpieza.id}>
                       <Th textAlign={"center"}>{datoLimpieza.id}</Th>
-                      <Th textAlign={"center"}>{datoLimpieza.limpieza}</Th>
+                      <Th textAlign={"center"}>{datoLimpieza.insumos}</Th>
                       <Th textAlign={"center"}>{datoLimpieza.medida}</Th>
                       <Th textAlign={"center"}>{datoLimpieza.inicial}</Th>
                       <Th textAlign={"center"}>{datoLimpieza.ingreso}</Th>

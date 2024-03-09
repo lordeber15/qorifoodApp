@@ -9,7 +9,7 @@ export const getLimpieza = async () => {
   return res.data;
 };
 export const createLimpieza = (limpieza) => {
-  return qoriApi.post("/empaques", limpieza);
+  return qoriApi.post("/limpieza", limpieza);
 };
 
 export const updateLimpieza = (limpieza) => {
