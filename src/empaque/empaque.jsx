@@ -193,6 +193,7 @@ export default function Empaque() {
     setInputInicial(0.0);
     setInputIngreso(0.0);
     setInputSalida(0.0);
+    setEditEmpaqueId(null);
   };
 
   return (
