@@ -13,3 +13,20 @@ padding: 10px;
 padding-left: 30px;
     padding-right: 30px;
 }
+.loading{
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10%;
+}
+.error{
+    display: flex;
+    align-items: center;
+    padding: 3%;
+}
+.nodatos{
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 5%;
+}
