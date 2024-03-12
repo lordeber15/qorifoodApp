@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const materiaPrimaApi = axios.create({
-  baseURL: "http://localhost:3000/",
-   /*baseURL: "https://qoriapp-backend.onrender.com/",*/
+  /*baseURL: "http://localhost:3000/",*/
+   baseURL: "https://qoriapp-backend.onrender.com/",
 });
 export const getMateriaPrima = async () => {
   const res = await materiaPrimaApi.get("/materiaprima");
