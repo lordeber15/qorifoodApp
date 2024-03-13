@@ -8,8 +8,8 @@ export const getProductoterminado = async () => {
   const res = await productoTerminado.get("/productoterminado");
   return res.data;
 };
-export const createProductoterminado = (productoterminado) => {
-  return productoTerminado.post("/productoterminado", productoterminado);
+export const createProductoterminado = async (productoterminado) => {
+  return await productoTerminado.post("/productoterminado", productoterminado);
 };
 
 export const updateProductoTerminado = (productoterminado) => {

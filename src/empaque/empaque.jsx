@@ -331,6 +331,7 @@ export default function Empaque() {
             <FormControl mt={4}>
               <FormLabel>Inicial</FormLabel>
               <Input
+                min={0}
                 onChange={handlerChangeInputInicial}
                 value={valueInputInicial}
                 type="number"
@@ -341,6 +342,7 @@ export default function Empaque() {
             <FormControl mt={4}>
               <FormLabel>Ingreso</FormLabel>
               <Input
+              min={0}
                 onChange={handlerChangeInputIngreso}
                 value={valueInputIngreso}
                 type="number"
@@ -351,6 +353,7 @@ export default function Empaque() {
             <FormControl mt={4}>
               <FormLabel>Salida</FormLabel>
               <Input
+              min={0}
                 onChange={handlerChangeInputSalida}
                 value={valueInputSalida}
                 type="number"

@@ -23,7 +23,6 @@ import {
   ModalBody,
   useDisclosure,
   Select,
-  Divider,
   CircularProgress,
 } from "@chakra-ui/react";
 import { DeleteIcon, AddIcon, EditIcon, ArrowLeftIcon } from "@chakra-ui/icons";
@@ -39,7 +38,7 @@ import {
 
 export default function Productoterminado() {
   const { isLoading, data: dataProductosTerminados, isError, error } = useQuery({
-    queryKey: ["productoTerminado"],
+    queryKey: ["productoterminado"],
     queryFn: getProductoterminado,
   });
 
@@ -51,21 +50,21 @@ export default function Productoterminado() {
   const addProductoTerminadoMutation = useMutation({
     mutationFn: createProductoterminado,
     onSuccess: () => {
-      queryClient.invalidateQueries("productoTerminado");
+      queryClient.invalidateQueries("productoterminado");
     },
   });
 
   const deleteProductoTerminadoMutation = useMutation({
     mutationFn: deleteProductoTerminado,
     onSuccess: () => {
-      queryClient.invalidateQueries("productoTerminado");
+      queryClient.invalidateQueries("productoterminado");
     },
   });
 
   const updateProductoTerminadoMutation = useMutation({
     mutationFn: updateProductoTerminado,
     onSuccess: () => {
-      queryClient.invalidateQueries("productoTerminado");
+      queryClient.invalidateQueries("productoterminado");
     },
   });
 

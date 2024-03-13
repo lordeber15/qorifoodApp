@@ -10,10 +10,34 @@ import {
   Button,
   Center,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+
+
 export default function Landing() {
   const [show, setShow] = useState(false);
+  const [usuario, setUsuario] = useState("");
+  const [password, setPasword] = useState("");
+
+  const handledusuario = (e)=>{
+    setUsuario(e.target.value);
+  }
+  const handledPassword = (e)=>{
+    setPasword(e.target.value);
+  }
+
   const handleClick = () => setShow(!show);
+
+  const handleIngresar = () => {
+    console.log(usuario)
+    console.log(password)
+    if(usuario=="eber" && password=="123456"){
+      window.location = ('/dashboard')
+      setPasword("")
+      setUsuario("")
+    }else{
+      console.log("no puedes ingresar")
+    }
+  };
+
   return (
     <div className={style.contenedor}>
       <div className={style.imagen}>
@@ -26,7 +50,7 @@ export default function Landing() {
         <Center>
           <Divider height="20px" orientation="horizontal" />
         </Center>
-        <Input placeholder="Usuario" />
+        <Input placeholder="Usuario" value={usuario} onChange={handledusuario} />
         <Center>
           <Divider height="10px" orientation="horizontal" />
         </Center>
@@ -35,6 +59,8 @@ export default function Landing() {
             pr="4.5rem"
             type={show ? "text" : "password"}
             placeholder="Contraseña"
+            value={password}
+            onChange={handledPassword}
           />
           <InputRightElement width="4.5rem">
             <Button h="1.75rem" size="sm" onClick={handleClick}>
@@ -45,11 +71,9 @@ export default function Landing() {
         <Center>
           <Divider height="10px" orientation="horizontal" />
         </Center>
-        <Link to="/dashboard">
-          <Button width={"100%"} colorScheme="gray">
-            Ingresar
-          </Button>
-        </Link>
+        <Button width={"100%"} colorScheme="gray" onClick={handleIngresar}>
+          Ingresar
+        </Button>
       </div>
     </div>
   );
