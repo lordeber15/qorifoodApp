@@ -1,45 +1,33 @@
-*{
-    margin: 0px;
-    padding: 0px;
-}
 .contenedor{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100vh;
-}
-.imagen{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    background-image: url("../assets/fondo.webp");
-    width: 75%;
-    height: 100%;
-    padding-bottom: 5%;
-    padding-left: 2%;
-    color: antiquewhite;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-}
-.login{
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content: center;
-    width: 25%;
-    height: 100%;
     padding: 20px;
-    background-color: #474747;
-    
-    color:#f3b60e
+}
+.titulo{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
-@media screen and (max-width: 812px){
-.imagen{
-    display: none;
+.tablas{
+padding: 10px;
+padding-left: 30px;
+    padding-right: 30px;
 }
-.login{
-    width: 100%;
+
+.loading{
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10%;
 }
+.error{
+    display: flex;
+    align-items: center;
+    padding: 3%;
+}
+.nodatos{
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 5%;
 }

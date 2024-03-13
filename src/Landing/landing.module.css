@@ -1,0 +1,45 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.contenedor{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+}
+.imagen{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-image: url("../assets/fondo.webp");
+    width: 75%;
+    height: 100%;
+    padding-bottom: 5%;
+    padding-left: 2%;
+    color: antiquewhite;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    width: 25%;
+    height: 100%;
+    padding: 20px;
+    background-color: #474747;
+    
+    color:#f3b60e
+}
+
+@media screen and (max-width: 812px){
+.imagen{
+    display: none;
+}
+.login{
+    width: 100%;
+}
+}

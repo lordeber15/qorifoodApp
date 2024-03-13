@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const productoTerminado = axios.create({
-  /*baseURL: "http://localhost:3000/",*/
-   baseURL: "https://qoriapp-backend.onrender.com/",
+  baseURL: "http://localhost:3000/",
+   /*baseURL: "https://qoriapp-backend.onrender.com/",*/
 });
 export const getProductoterminado = async () => {
   const res = await productoTerminado.get("/productoterminado");

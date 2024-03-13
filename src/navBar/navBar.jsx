@@ -8,7 +8,7 @@ import {
   MenuItem,
   IconButton,
 } from "@chakra-ui/react";
-import { EditIcon, HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
+import { EditIcon, HamburgerIcon, SearchIcon, SmallAddIcon} from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 export default function navBar() {
   return (
@@ -32,6 +32,9 @@ export default function navBar() {
             variant="outline"
           />
           <MenuList>
+            <Link to="/login ">
+              <MenuItem icon={<SmallAddIcon />}>Crear Usuarios</MenuItem>
+            </Link>
             <Link to="/ ">
               <MenuItem icon={<EditIcon />}>Salir</MenuItem>
             </Link>
