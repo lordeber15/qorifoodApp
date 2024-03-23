@@ -1,16 +1,38 @@
 import style from "./navBar.module.css";
 import {
   Heading,
-  Input,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
   IconButton,
 } from "@chakra-ui/react";
-import { EditIcon, HamburgerIcon, SearchIcon, SmallAddIcon} from "@chakra-ui/icons";
+import { EditIcon, HamburgerIcon, SmallAddIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
-export default function navBar() {
+import { useEffect, useState } from "react";
+
+export default function NavBar() {
+  const [userData, setUserData] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    const storedUserData = localStorage.getItem("userData");
+    if (storedUserData) {
+      setUserData(JSON.parse(storedUserData));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (userData && userData.cargo === "administrador") {
+      setIsAdmin(true);
+    } else {
+      setIsAdmin(false);
+    }
+  }, [userData]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("userData");
+  };
   return (
     <div className={style.contenedor}>
       <div className={style.icon}>
@@ -19,10 +41,7 @@ export default function navBar() {
         </Link>
       </div>
       <div className={style.search}>
-        <Input placeholder="Buscar..." />
-        <Link to="#">
-          <SearchIcon boxSize={5} />
-        </Link>
+        <label>Bienvenido! {userData && userData.usuario}</label>
         <Menu>
           <MenuButton
             color={"#fffff"}
@@ -32,10 +51,12 @@ export default function navBar() {
             variant="outline"
           />
           <MenuList>
-            <Link to="/login ">
-              <MenuItem icon={<SmallAddIcon />}>Crear Usuarios</MenuItem>
-            </Link>
-            <Link to="/ ">
+            {isAdmin && (
+              <Link to="/login">
+                <MenuItem icon={<SmallAddIcon />}>Crear Usuarios</MenuItem>
+              </Link>
+            )}
+            <Link to="/" onClick={handleLogout}>
               <MenuItem icon={<EditIcon />}>Salir</MenuItem>
             </Link>
           </MenuList>

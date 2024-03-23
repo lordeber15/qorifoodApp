@@ -14,8 +14,9 @@
 }
 .search{
     display: flex;
-    align-items: center;
+    align-items: center ;
     flex-direction: row;
+    justify-content: end;
     gap: 8px;
     width: 30%;
     transition: all 0.3;

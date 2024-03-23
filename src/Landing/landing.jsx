@@ -1,5 +1,5 @@
 import style from "./landing.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import imagen from "../assets/Logo.png";
 import {
   Heading,
@@ -10,31 +10,55 @@ import {
   Button,
   Center,
 } from "@chakra-ui/react";
-
+import { getUser } from "../request/Landing";
+import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
 
 export default function Landing() {
+  const {
+    //isLoading,
+    data: dataUser,
+    //isError,
+    //error,
+  } = useQuery({
+    queryKey: ["login"],
+    queryFn: getUser,
+  });
+  const [userData, setUserData] = useState(null);
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [usuario, setUsuario] = useState("");
   const [password, setPasword] = useState("");
 
-  const handledusuario = (e)=>{
+  useEffect(() => {
+    const storedUserData = localStorage.getItem("userData");
+    if (storedUserData) {
+      setUserData(JSON.parse(storedUserData));
+    }
+  }, []);
+
+  const handledusuario = (e) => {
     setUsuario(e.target.value);
-  }
-  const handledPassword = (e)=>{
+  };
+  const handledPassword = (e) => {
     setPasword(e.target.value);
-  }
+  };
 
   const handleClick = () => setShow(!show);
 
   const handleIngresar = () => {
-    console.log(usuario)
-    console.log(password)
-    if(usuario=="eber" && password=="123456"){
-      window.location = ('/dashboard')
-      setPasword("")
-      setUsuario("")
-    }else{
-      console.log("no puedes ingresar")
+    if (dataUser) {
+      const user = dataUser.find(
+        (user) => usuario === user.usuario && password === user.password
+      );
+      if (user) {
+        localStorage.setItem("userData", JSON.stringify(user));
+        navigate("/dashboard");
+      } else {
+        console.log("No puedes ingresar");
+      }
+    } else {
+      console.log("Datos de usuario no disponibles aún");
     }
   };
 
@@ -50,7 +74,11 @@ export default function Landing() {
         <Center>
           <Divider height="20px" orientation="horizontal" />
         </Center>
-        <Input placeholder="Usuario" value={usuario} onChange={handledusuario} />
+        <Input
+          placeholder="Usuario"
+          value={usuario}
+          onChange={handledusuario}
+        />
         <Center>
           <Divider height="10px" orientation="horizontal" />
         </Center>
