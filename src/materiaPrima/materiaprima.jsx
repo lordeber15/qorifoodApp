@@ -36,6 +36,7 @@ import {
 } from "../request/materiaprima";
 
 export default function MateriaPrima() {
+  const storedUserData = JSON.parse(localStorage.getItem("userData")) || null;
   const {
     isLoading,
     data: dataMateriaPrima,
@@ -233,7 +234,8 @@ export default function MateriaPrima() {
                       Salida
                     </Th>
                     <Th textAlign={"center"}>Saldo</Th>
-                    <Th textAlign={"center"}>Editar</Th>
+                    {storedUserData.cargo=="administrador"?<Th textAlign={"center"}>Editar</Th>:(<></>)}
+                    
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -250,6 +252,7 @@ export default function MateriaPrima() {
                         (parseFloat(materiaPrima.inicial)+parseFloat(materiaPrima.ingreso))-parseFloat(materiaPrima.salida)
                         }
                       </Th>
+                      {storedUserData.cargo=="administrador"?(
                       <Th textAlign={"center"}>
                         <IconButton
                           marginRight={"5px"}
@@ -268,7 +271,8 @@ export default function MateriaPrima() {
                           }
                           icon={<DeleteIcon />}
                         />
-                      </Th>
+                      </Th>):(<></>)}
+                      
                     </Tr>
                   ))}
                 </Tbody>

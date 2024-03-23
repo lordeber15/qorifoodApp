@@ -36,6 +36,7 @@ import {
 } from "../request/limpieza";
 
 export default function Limpieza() {
+  const storedUserData = JSON.parse(localStorage.getItem("userData")) || null;
   const {
     isLoading,
     data: dataLimpieza,
@@ -241,7 +242,8 @@ export default function Limpieza() {
                       Salida
                     </Th>
                     <Th textAlign={"center"}>Saldo</Th>
-                    <Th textAlign={"center"}>Editar</Th>
+                    {storedUserData.cargo=="administrador"?(<Th textAlign={"center"}>Editar</Th>):(<></>)}
+                    
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -258,6 +260,7 @@ export default function Limpieza() {
                           parseFloat(datoLimpieza.ingreso) -
                           parseFloat(datoLimpieza.salida)}
                       </Th>
+                      {storedUserData.cargo=="administrador"?(
                       <Th textAlign={"center"}>
                         <IconButton
                           marginRight={"5px"}
@@ -272,7 +275,8 @@ export default function Limpieza() {
                           onClick={() => handleDeleteLimpieza(datoLimpieza.id)}
                           icon={<DeleteIcon />}
                         />
-                      </Th>
+                      </Th>):(<></>)}
+                      
                     </Tr>
                   ))}
                 </Tbody>

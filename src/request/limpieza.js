@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const qoriApi = axios.create({
- baseURL: "http://localhost:3000/",
-  /*baseURL: "https://qoriapp-backend.onrender.com/",*/
+ /*baseURL: "http://localhost:3000/",*/
+  baseURL: "https://qoriapp-backend.onrender.com/",
 });
 export const getLimpieza = async () => {
   const res = await qoriApi.get("/limpieza");

@@ -4,7 +4,7 @@ import Limpieza from "./limpieza/limpieza";
 import Empaque from "./empaque/empaque";
 import Materiaprima from "./materiaPrima/materiaprima";
 import Productoterminado from "./productoterminado/productoterminado";
-import Login from "./Login/login";
+import Login from "./login/login";
 import NavBar from "./navBar/navBar";
 import { Route, Routes, useLocation } from "react-router-dom";
 import ProtectedRoutes from "./components/protectedRoutes/protectedRoutes";

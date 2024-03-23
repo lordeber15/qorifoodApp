@@ -36,6 +36,7 @@ import {
 } from "../request/empaque";
 
 export default function Empaque() {
+  const storedUserData = JSON.parse(localStorage.getItem("userData")) || null;
   const {
     isLoading,
     data: dataEmpaques,
@@ -242,7 +243,8 @@ export default function Empaque() {
                     <Th isNumeric textAlign={"center"}>
                       saldo
                     </Th>
-                    <Th textAlign={"center"}>Editar</Th>
+                    {storedUserData.cargo=="administrador"?(<Th textAlign={"center"}>Editar</Th>):(<></>)}
+                    
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -261,6 +263,7 @@ export default function Empaque() {
                               parseFloat(datosempaques.ingreso) -
                               parseFloat(datosempaques.salida)}
                           </Th>
+                          {storedUserData.cargo=="administrador"?(
                           <Th textAlign={"center"}>
                             <IconButton
                               marginRight={"5px"}
@@ -279,7 +282,8 @@ export default function Empaque() {
                               }}
                               icon={<DeleteIcon />}
                             />
-                          </Th>
+                          </Th>):(<></>)}
+                          
                         </Tr>
                       );
                     })}
