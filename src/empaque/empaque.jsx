@@ -243,7 +243,7 @@ export default function Empaque() {
                     <Th isNumeric textAlign={"center"}>
                       saldo
                     </Th>
-                    {storedUserData.cargo=="administrador"?(<Th textAlign={"center"}>Editar</Th>):(<></>)}
+                    {storedUserData.cargo=="Administrador"?(<Th textAlign={"center"}>Editar</Th>):(<></>)}
                     
                   </Tr>
                 </Thead>
@@ -263,7 +263,7 @@ export default function Empaque() {
                               parseFloat(datosempaques.ingreso) -
                               parseFloat(datosempaques.salida)}
                           </Th>
-                          {storedUserData.cargo=="administrador"?(
+                          {storedUserData.cargo=="Administrador"?(
                           <Th textAlign={"center"}>
                             <IconButton
                               marginRight={"5px"}

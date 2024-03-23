@@ -242,7 +242,7 @@ export default function Limpieza() {
                       Salida
                     </Th>
                     <Th textAlign={"center"}>Saldo</Th>
-                    {storedUserData.cargo=="administrador"?(<Th textAlign={"center"}>Editar</Th>):(<></>)}
+                    {storedUserData.cargo=="Administrador"?(<Th textAlign={"center"}>Editar</Th>):(<></>)}
                     
                   </Tr>
                 </Thead>
@@ -260,7 +260,7 @@ export default function Limpieza() {
                           parseFloat(datoLimpieza.ingreso) -
                           parseFloat(datoLimpieza.salida)}
                       </Th>
-                      {storedUserData.cargo=="administrador"?(
+                      {storedUserData.cargo=="Administrador"?(
                       <Th textAlign={"center"}>
                         <IconButton
                           marginRight={"5px"}

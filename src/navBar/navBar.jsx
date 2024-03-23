@@ -23,7 +23,7 @@ export default function NavBar() {
   }, []);
 
   useEffect(() => {
-    if (userData && userData.cargo === "administrador") {
+    if (userData && userData.cargo === "Administrador") {
       setIsAdmin(true);
     } else {
       setIsAdmin(false);
