@@ -1,10 +1,11 @@
 import style from "./dasboard.module.css";
 import { Heading } from "@chakra-ui/react";
 import Card from "../Card/card";
-import empaques from "../assets/Empaques.webp";
-import materiaprima from "../assets/materiaprima.webp";
-import productterminado from "../assets/Productoterminado.webp";
-import limpieza from "../assets/limpieza.webp";
+import empaques from "../assets/box.svg";
+import materiaprima from "../assets/materiaprima.svg";
+import productterminado from "../assets/productoterminado.svg";
+import limpieza from "../assets/Limpieza.svg";
+
 
 export default function Dashboard() {
   return (

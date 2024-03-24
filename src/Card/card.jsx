@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
+
 export default function card({ cardname, imagen, url }) {
   return (
     <div>
@@ -24,6 +25,7 @@ export default function card({ cardname, imagen, url }) {
             alt="Green double couch with wooden legs"
             borderRadius="lg"
           />
+          
         </CardBody>
         <CardFooter>
           <Link to={url}>
