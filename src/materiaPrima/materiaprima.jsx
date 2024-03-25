@@ -234,8 +234,16 @@ export default function MateriaPrima() {
                       Salida
                     </Th>
                     <Th textAlign={"center"}>Saldo</Th>
-                    {storedUserData.cargo=="Administrador"?<Th textAlign={"center"}>Editar</Th>:(<></>)}
-                    
+                    {storedUserData.cargo == "Administrador" ? (
+                      <Th textAlign={"center"}>Editar</Th>
+                    ) : (
+                      <></>
+                    )}
+                    {storedUserData.cargo == "Supervisor" ? (
+                      <Th textAlign={"center"}>Editar</Th>
+                    ) : (
+                      <></>
+                    )}
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -248,31 +256,48 @@ export default function MateriaPrima() {
                       <Th textAlign={"center"}>{materiaPrima.ingreso}</Th>
                       <Th textAlign={"center"}>{materiaPrima.salida}</Th>
                       <Th textAlign={"center"}>
-                        {
-                        (parseFloat(materiaPrima.inicial)+parseFloat(materiaPrima.ingreso))-parseFloat(materiaPrima.salida)
-                        }
+                        {parseFloat(materiaPrima.inicial) +
+                          parseFloat(materiaPrima.ingreso) -
+                          parseFloat(materiaPrima.salida)}
                       </Th>
-                      {storedUserData.cargo=="Administrador"?(
-                      <Th textAlign={"center"}>
-                        <IconButton
-                          marginRight={"5px"}
-                          variant="outline"
-                          colorScheme="teal"
-                          onClick={() =>
-                            handleEditMateriaPrima(materiaPrima.id)
-                          }
-                          icon={<EditIcon />}
-                        />
-                        <IconButton
-                          variant="outline"
-                          colorScheme="teal"
-                          onClick={() =>
-                            handleDeleteMateriaPrima(materiaPrima.id)
-                          }
-                          icon={<DeleteIcon />}
-                        />
-                      </Th>):(<></>)}
-                      
+                      {storedUserData.cargo == "Administrador" ? (
+                        <Th textAlign={"center"}>
+                          <IconButton
+                            marginRight={"5px"}
+                            variant="outline"
+                            colorScheme="teal"
+                            onClick={() =>
+                              handleEditMateriaPrima(materiaPrima.id)
+                            }
+                            icon={<EditIcon />}
+                          />
+                          <IconButton
+                            variant="outline"
+                            colorScheme="teal"
+                            onClick={() =>
+                              handleDeleteMateriaPrima(materiaPrima.id)
+                            }
+                            icon={<DeleteIcon />}
+                          />
+                        </Th>
+                      ) : (
+                        <></>
+                      )}
+                      {storedUserData.cargo == "Supervisor" ? (
+                        <Th textAlign={"center"}>
+                          <IconButton
+                            marginRight={"5px"}
+                            variant="outline"
+                            colorScheme="teal"
+                            onClick={() =>
+                              handleEditMateriaPrima(materiaPrima.id)
+                            }
+                            icon={<EditIcon />}
+                          />
+                        </Th>
+                      ) : (
+                        <></>
+                      )}
                     </Tr>
                   ))}
                 </Tbody>
@@ -328,6 +353,7 @@ export default function MateriaPrima() {
                 type="number"
                 placeholder="Inicial"
                 required
+                min={0}
               />
             </FormControl>
             <FormControl mt={4}>
@@ -338,6 +364,7 @@ export default function MateriaPrima() {
                 type="number"
                 placeholder="Ingreso"
                 required
+                min={0}
               />
             </FormControl>
             <FormControl mt={4}>
@@ -348,17 +375,26 @@ export default function MateriaPrima() {
                 type="number"
                 placeholder="Salida"
                 required
+                min={0}
               />
             </FormControl>
           </ModalBody>
 
           <ModalFooter>
             {editMateriaPrimaId == null ? (
-              <Button onClick={handlerClickMateriaPrima} colorScheme="blue" mr={3}>
+              <Button
+                onClick={handlerClickMateriaPrima}
+                colorScheme="blue"
+                mr={3}
+              >
                 Guardar
               </Button>
             ) : (
-              <Button onClick={handleUpdateMateriaPrima} colorScheme="blue" mr={3}>
+              <Button
+                onClick={handleUpdateMateriaPrima}
+                colorScheme="blue"
+                mr={3}
+              >
                 Editar
               </Button>
             )}

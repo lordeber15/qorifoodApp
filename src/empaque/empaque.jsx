@@ -243,8 +243,16 @@ export default function Empaque() {
                     <Th isNumeric textAlign={"center"}>
                       saldo
                     </Th>
-                    {storedUserData.cargo=="Administrador"?(<Th textAlign={"center"}>Editar</Th>):(<></>)}
-                    
+                    {storedUserData.cargo == "Administrador" ? (
+                      <Th textAlign={"center"}>Editar</Th>
+                    ) : (
+                      <></>
+                    )}
+                    {storedUserData.cargo == "Supervisor" ? (
+                      <Th textAlign={"center"}>Editar</Th>
+                    ) : (
+                      <></>
+                    )}
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -263,27 +271,44 @@ export default function Empaque() {
                               parseFloat(datosempaques.ingreso) -
                               parseFloat(datosempaques.salida)}
                           </Th>
-                          {storedUserData.cargo=="Administrador"?(
-                          <Th textAlign={"center"}>
-                            <IconButton
-                              marginRight={"5px"}
-                              variant="outline"
-                              colorScheme="teal"
-                              onClick={() => {
-                                handleEditEmpaque(datosempaques.id);
-                              }}
-                              icon={<EditIcon />}
-                            />
-                            <IconButton
-                              variant="outline"
-                              colorScheme="teal"
-                              onClick={() => {
-                                handleDeleteEmpaque(datosempaques.id);
-                              }}
-                              icon={<DeleteIcon />}
-                            />
-                          </Th>):(<></>)}
-                          
+                          {storedUserData.cargo == "Administrador" ? (
+                            <Th textAlign={"center"}>
+                              <IconButton
+                                marginRight={"5px"}
+                                variant="outline"
+                                colorScheme="teal"
+                                onClick={() => {
+                                  handleEditEmpaque(datosempaques.id);
+                                }}
+                                icon={<EditIcon />}
+                              />
+                              <IconButton
+                                variant="outline"
+                                colorScheme="teal"
+                                onClick={() => {
+                                  handleDeleteEmpaque(datosempaques.id);
+                                }}
+                                icon={<DeleteIcon />}
+                              />
+                            </Th>
+                          ) : (
+                            <></>
+                          )}
+                          {storedUserData.cargo == "Supervisor" ? (
+                            <Th textAlign={"center"}>
+                              <IconButton
+                                marginRight={"5px"}
+                                variant="outline"
+                                colorScheme="teal"
+                                onClick={() => {
+                                  handleEditEmpaque(datosempaques.id);
+                                }}
+                                icon={<EditIcon />}
+                              />
+                            </Th>
+                          ) : (
+                            <></>
+                          )}
                         </Tr>
                       );
                     })}
@@ -346,7 +371,7 @@ export default function Empaque() {
             <FormControl mt={4}>
               <FormLabel>Ingreso</FormLabel>
               <Input
-              min={0}
+                min={0}
                 onChange={handlerChangeInputIngreso}
                 value={valueInputIngreso}
                 type="number"
@@ -357,7 +382,7 @@ export default function Empaque() {
             <FormControl mt={4}>
               <FormLabel>Salida</FormLabel>
               <Input
-              min={0}
+                min={0}
                 onChange={handlerChangeInputSalida}
                 value={valueInputSalida}
                 type="number"

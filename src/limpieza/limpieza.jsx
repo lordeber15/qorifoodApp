@@ -100,7 +100,7 @@ export default function Limpieza() {
       return console.log(
         "Debes ingresar un empaque, Seleccionar un medida, inicial, ingreso y salida"
       );
-    }else if (valueInputLimpieza == "") {
+    } else if (valueInputLimpieza == "") {
       return console.log("Debes ingresar un Insumo");
     } else if (valueSelectMedida == "") {
       return console.log("Debes Seleccionar un Medida");
@@ -242,8 +242,16 @@ export default function Limpieza() {
                       Salida
                     </Th>
                     <Th textAlign={"center"}>Saldo</Th>
-                    {storedUserData.cargo=="Administrador"?(<Th textAlign={"center"}>Editar</Th>):(<></>)}
-                    
+                    {storedUserData.cargo == "Administrador" ? (
+                      <Th textAlign={"center"}>Editar</Th>
+                    ) : (
+                      <></>
+                    )}
+                    {storedUserData.cargo == "Supervisor" ? (
+                      <Th textAlign={"center"}>Editar</Th>
+                    ) : (
+                      <></>
+                    )}
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -260,23 +268,61 @@ export default function Limpieza() {
                           parseFloat(datoLimpieza.ingreso) -
                           parseFloat(datoLimpieza.salida)}
                       </Th>
-                      {storedUserData.cargo=="Administrador"?(
-                      <Th textAlign={"center"}>
-                        <IconButton
-                          marginRight={"5px"}
-                          variant="outline"
-                          colorScheme="teal"
-                          onClick={() => handleEditLimpieza(datoLimpieza.id)}
-                          icon={<EditIcon />}
-                        />
-                        <IconButton
-                          variant="outline"
-                          colorScheme="teal"
-                          onClick={() => handleDeleteLimpieza(datoLimpieza.id)}
-                          icon={<DeleteIcon />}
-                        />
-                      </Th>):(<></>)}
-                      
+                      {storedUserData.cargo == "Administrador" ? (
+                        <Th textAlign={"center"}>
+                          <IconButton
+                            marginRight={"5px"}
+                            variant="outline"
+                            colorScheme="teal"
+                            onClick={() => handleEditLimpieza(datoLimpieza.id)}
+                            icon={<EditIcon />}
+                          />
+                          <IconButton
+                            variant="outline"
+                            colorScheme="teal"
+                            onClick={() =>
+                              handleDeleteLimpieza(datoLimpieza.id)
+                            }
+                            icon={<DeleteIcon />}
+                          />
+                        </Th>
+                      ) : (
+                        <></>
+                      )}
+                      {storedUserData.cargo == "Administrador" ? (
+                        <Th textAlign={"center"}>
+                          <IconButton
+                            marginRight={"5px"}
+                            variant="outline"
+                            colorScheme="teal"
+                            onClick={() => handleEditLimpieza(datoLimpieza.id)}
+                            icon={<EditIcon />}
+                          />
+                          <IconButton
+                            variant="outline"
+                            colorScheme="teal"
+                            onClick={() =>
+                              handleDeleteLimpieza(datoLimpieza.id)
+                            }
+                            icon={<DeleteIcon />}
+                          />
+                        </Th>
+                      ) : (
+                        <></>
+                      )}
+                      {storedUserData.cargo == "Supervisor" ? (
+                        <Th textAlign={"center"}>
+                          <IconButton
+                            marginRight={"5px"}
+                            variant="outline"
+                            colorScheme="teal"
+                            onClick={() => handleEditLimpieza(datoLimpieza.id)}
+                            icon={<EditIcon />}
+                          />
+                        </Th>
+                      ) : (
+                        <></>
+                      )}
                     </Tr>
                   ))}
                 </Tbody>
@@ -332,6 +378,7 @@ export default function Limpieza() {
                 type="number"
                 placeholder="Inicial"
                 required
+                min={0}
               />
             </FormControl>
             <FormControl mt={4}>
@@ -342,6 +389,7 @@ export default function Limpieza() {
                 type="number"
                 placeholder="Ingreso"
                 required
+                min={0}
               />
             </FormControl>
             <FormControl mt={4}>
@@ -352,6 +400,7 @@ export default function Limpieza() {
                 type="number"
                 placeholder="Salida"
                 required
+                min={0}
               />
             </FormControl>
           </ModalBody>

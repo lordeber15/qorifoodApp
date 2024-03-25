@@ -6,7 +6,6 @@ import materiaprima from "../assets/materiaprima.svg";
 import productterminado from "../assets/productoterminado.svg";
 import limpieza from "../assets/Limpieza.svg";
 
-
 export default function Dashboard() {
   return (
     <div className={style.contenedor}>
@@ -20,11 +19,11 @@ export default function Dashboard() {
           url={"/materiaprima"}
         />
         <Card cardname={"Empaques"} imagen={empaques} url={"/empaques"} />
-        <Card
+        {/* <Card
           cardname={"Producto terminado"}
           imagen={productterminado}
           url={"/productoterminado"}
-        />
+        /> */}
         <Card
           cardname={"Insumos de Limpieza"}
           imagen={limpieza}
