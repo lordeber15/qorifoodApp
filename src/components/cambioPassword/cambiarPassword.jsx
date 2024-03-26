@@ -3,7 +3,6 @@ import style from "./cambiarPassword.module.css";
 import { useState, useEffect } from "react";
 import { useQueryClient, useMutation } from "react-query";
 import { updateLogin } from "../../request/login.js";
-import { Navigate } from "react-router-dom";
 
 function CambiarPassword() {
   const queryClient = useQueryClient();
