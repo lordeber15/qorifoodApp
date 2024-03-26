@@ -31,9 +31,6 @@ function CambiarPassword() {
   const handleLogout = () => {
     localStorage.removeItem("userData");
   };
-  const handleRedirecionar = () => {
-    return <Navigate to="/Landing" />;
-  };
 
   const handleUpdatePassword = async () => {
     if (password === "") {
