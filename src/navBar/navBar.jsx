@@ -14,7 +14,6 @@ import { useEffect, useState } from "react";
 export default function NavBar() {
   const [userData, setUserData] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [isSuper, setIsSuper] = useState(false);
 
   useEffect(() => {
     const storedUserData = localStorage.getItem("userData");

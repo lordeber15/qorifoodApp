@@ -8,6 +8,7 @@ import Login from "./Login/login";
 import NavBar from "./navBar/navBar";
 import { Route, Routes, useLocation } from "react-router-dom";
 import ProtectedRoutes from "./components/protectedRoutes/protectedRoutes";
+import CambiarPassword from "./components/cambioPassword/cambiarPassword";
 
 function App() {
   const storedUserData = JSON.parse(localStorage.getItem("userData")) || null;
@@ -24,6 +25,7 @@ function App() {
           <Route path="/empaques" element={<Empaque />} />
           <Route path="/login" element={<Login />} />
           <Route path="/productoterminado" element={<Productoterminado />} />
+          <Route path="/cambiopassword" element={<CambiarPassword />} />
           <Route path="*" element={<Landing />} />
         </Route>
       </Routes>
