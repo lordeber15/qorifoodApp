@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 export default function NavBar() {
   const [userData, setUserData] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isSuper, setIsSuper] = useState(false);
 
   useEffect(() => {
     const storedUserData = localStorage.getItem("userData");
@@ -51,11 +52,16 @@ export default function NavBar() {
             variant="outline"
           />
           <MenuList>
-            {isAdmin && (
+            {isAdmin ? (
               <Link to="/login">
                 <MenuItem icon={<SmallAddIcon />}>Crear Usuarios</MenuItem>
               </Link>
+            ) : (
+              <Link to="/cambiopassword">
+                <MenuItem icon={<SmallAddIcon />}>Cambiar Contraseña</MenuItem>
+              </Link>
             )}
+
             <Link to="/" onClick={handleLogout}>
               <MenuItem icon={<EditIcon />}>Salir</MenuItem>
             </Link>
