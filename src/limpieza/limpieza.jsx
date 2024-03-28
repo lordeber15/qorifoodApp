@@ -289,27 +289,6 @@ export default function Limpieza() {
                       ) : (
                         <></>
                       )}
-                      {storedUserData.cargo == "Administrador" ? (
-                        <Th textAlign={"center"}>
-                          <IconButton
-                            marginRight={"5px"}
-                            variant="outline"
-                            colorScheme="teal"
-                            onClick={() => handleEditLimpieza(datoLimpieza.id)}
-                            icon={<EditIcon />}
-                          />
-                          <IconButton
-                            variant="outline"
-                            colorScheme="teal"
-                            onClick={() =>
-                              handleDeleteLimpieza(datoLimpieza.id)
-                            }
-                            icon={<DeleteIcon />}
-                          />
-                        </Th>
-                      ) : (
-                        <></>
-                      )}
                       {storedUserData.cargo == "Supervisor" ? (
                         <Th textAlign={"center"}>
                           <IconButton
